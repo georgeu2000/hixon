@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'opal'
 gem 'thin'
 gem 'em-websocket'
+gem 'mongoid', '~> 4.0.0'
 
 
 group :test do
