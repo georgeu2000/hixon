@@ -7,7 +7,7 @@ class Store
       puts 'message!'
 
       create( name:'first object!' )
-      puts Store.all
+      ap Store.all
     end
   end
 end

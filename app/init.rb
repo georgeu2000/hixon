@@ -1,5 +1,6 @@
 puts :____INIT_____
 
+require 'awesome_print'
 require 'mongoid'
 Mongoid.load!( 'config/mongoid.yml', :test )
 Mongoid::Config.purge!

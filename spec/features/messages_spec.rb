@@ -17,3 +17,13 @@ describe 'Message to server', type: :feature do
     expect( Store.count ).to eq 1
   end
 end
+
+
+describe 'Message from server', type: :feature do
+ specify do
+    visit '/'
+    click_link 'click me'
+
+    expect( Store.count ).to eq 1
+  end
+end
