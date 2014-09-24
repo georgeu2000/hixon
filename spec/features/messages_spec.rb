@@ -22,8 +22,9 @@ end
 describe 'Message from server', type: :feature do
  specify do
     visit '/'
-    click_link 'click me'
+    Store.send_message
+    sleep 1
 
-    expect( Store.count ).to eq 1
+    expect( page.html ).to include 'message from server'
   end
 end

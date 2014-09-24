@@ -8,8 +8,11 @@ require './app/init'
 RSpec.configure do |config|
   config.filter_run focus:true
   config.run_all_when_everything_filtered = true
-end
 
+  config.before( :each ) do
+    Mongoid::Config.purge!
+  end
+end
 
 Capybara.configure do |config|
   config.run_server = false

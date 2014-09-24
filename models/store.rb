@@ -1,13 +1,15 @@
 class Store
   include Mongoid::Document
-  field :name, type: String
+  field :name, type:String
 
   class << self
     def message
-      puts 'message!'
-
       create( name:'first object!' )
-      ap Store.all
+    end
+
+    def send_message
+      puts "#{ self } creating queue item..."
+      QueueItem.create( message:'message from server')
     end
   end
 end
