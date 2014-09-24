@@ -15,8 +15,9 @@ guard :process, name:'Rack', command:'rackup' do
 end
 
 guard :rspec, cmd: 'rspec spec' do
-  watch(%r{^app/(.+)\.rb$})     { 'spec' }
-  watch(%r{^js/(.+)\.rb$})      { 'spec' }
-  watch(%r{^models/(.+)\.rb$})  { 'spec' }
-  watch(%r{^spec/(.+)\.rb$})    { 'spec' }
+  watch(%r{^app/(.+)\.rb$})        { 'spec' }
+  watch(%r{^js/(.+)\.rb$})         { 'spec' }
+  watch(%r{^models/(.+)\.rb$})     { 'spec' }
+  watch(%r{^pages/(.+)\.html$})    { 'spec' }
+  watch(%r{^spec/(.+)\.rb$})       { 'spec' }
 end
