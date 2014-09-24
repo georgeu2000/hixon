@@ -19,5 +19,6 @@ guard :rspec, cmd: 'rspec spec' do
   watch(%r{^js/(.+)\.rb$})         { 'spec' }
   watch(%r{^models/(.+)\.rb$})     { 'spec' }
   watch(%r{^pages/(.+)\.html$})    { 'spec' }
+  watch(%r{^public/js/(.+)\.js$})  { 'spec' }
   watch(%r{^spec/(.+)\.rb$})       { 'spec' }
 end
