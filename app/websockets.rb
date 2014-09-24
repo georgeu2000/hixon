@@ -37,7 +37,7 @@ EventMachine.run do
   end
 
   def send_message message, signature
-    puts "EM.#{ __method__ } total of #{ @clients.count } clients."
+    puts "EM.#{ __method__ } to a total of #{ @clients.count } clients."
     ws = @clients.select{| ws | ws.signature == signature }.first
     if ws.nil?
       puts "No ws with signature #{ signature }"
@@ -48,5 +48,3 @@ EventMachine.run do
     ws.send message
   end
 end
-
-

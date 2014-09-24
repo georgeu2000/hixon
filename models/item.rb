@@ -4,7 +4,7 @@ class Item
 
   class << self
     def message_for signature
-      puts " #{ self }.#{ __method__ } creating for #{ signature }"
+      puts "#{ self }.#{ __method__ } creating for #{ signature }"
       Item.create( signature:signature )
 
       send_message_for signature
