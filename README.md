@@ -9,3 +9,7 @@ It provides 2 way communication between the browser and the server. It's like Ru
 1. Developer Happiness&trade;
 1. Automatically sync objects on browswer and server
 1. Send arbitrary messages from the server to browser
+1. Easy to use. Easy to customize and extend.
+
+####To Do####
+1. Deploy demo on Heroku
