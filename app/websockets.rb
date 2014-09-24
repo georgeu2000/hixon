@@ -22,17 +22,15 @@ EventMachine.run do
 
     ws.onmessage do |msg|
       puts "Message received: #{ msg }"
-      Store.message_for ws.signature
+      Item.message_for ws.signature
     end
   end
 
   EM.add_periodic_timer( 0.1 ){ check_queue }
 
   def check_queue
-    item = QueueItem.first
+    item = MessageToBrowser.first
     return if item.nil?
-
-    ap item
 
     send_message item.message, item.signature
     item.delete

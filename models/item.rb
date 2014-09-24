@@ -1,19 +1,20 @@
-class Store
+class Item
   include Mongoid::Document
   field :signature, type:Integer
 
   class << self
     def message_for signature
       puts " #{ self }.#{ __method__ } creating for #{ signature }"
-      Store.create( signature:signature )
+      Item.create( signature:signature )
+
+      send_message_for signature
     end
 
-    def send_message
+    def send_message_for signature
       puts "#{ self } creating queue item."
 
-      signature = Store.first.signature if Store.first
-      QueueItem.create( message:'message from server', 
-                        signature:signature )
+      MessageToBrowser.create( message:'item created', 
+                               signature:signature   )
     end
   end
 end
