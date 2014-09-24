@@ -10,7 +10,7 @@ end
 
 
 describe 'Message to server', type: :feature do
- specify do
+  specify do
     visit '/'
     click_link 'click me'
 
@@ -19,11 +19,15 @@ describe 'Message to server', type: :feature do
 end
 
 
-describe 'Message from server', type: :feature do
- specify do
+describe 'Message from server', type: :feature  do
+  specify do
     visit '/'
+    
+    # Set up the Store object with signature for this client.
+    click_link 'click me' 
+
     Store.send_message
-    sleep 1
+    sleep 0.1
 
     expect( page.html ).to include 'message from server'
   end
