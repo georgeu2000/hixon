@@ -14,4 +14,6 @@ require 'opal'
 # end
 
 require './app/init.rb'
+require './config/disable_logger.rb'
+
 run Sinatra::Application
