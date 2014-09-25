@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'opal'
+gem 'opal-jquery'
 gem 'thin'
 gem 'em-websocket'
 gem 'mongoid', '~> 4.0.0'
