@@ -11,7 +11,7 @@ describe 'Create item creates', type: :feature do
 end
 
 
-describe 'Create item sends update to browser', type: :feature  do
+describe 'Create item sends update to browser', type: :feature do
   specify do
     visit '/'
     click_link 'create item' 
@@ -23,14 +23,28 @@ describe 'Create item sends update to browser', type: :feature  do
 end
 
 
-describe 'Create item creates item in browser', type: :feature ,focus:true do
+describe 'Create item creates item in browser', type: :feature do
   specify do
     visit '/'
-
     click_link 'create item in browser'
 
     expect( page.html ).to have_css "div#items"
     expect( page.html ).to have_css "div#items input[type='text']"
     expect( page.html ).to have_css "div#items input[name='name']"
+  end
+end
+
+
+describe 'Create item saves item', type: :feature ,focus:false do
+  specify do
+    visit '/'
+    within 'div#new_item' do
+      fill_in 'name', with:'new item name'
+      click_button 'submit'
+    end
+    
+    sleep 0.1
+    expect( Item.count      ).to eq 1
+    expect( Item.first.name ).to eq 'new item name'
   end
 end

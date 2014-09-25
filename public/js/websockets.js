@@ -8,25 +8,18 @@ function addMessage(msg) {
 function send() {
   try {
     console.log('Browser sending...');
-    socket.send('message');
+    socket.send('{"name":"name"}');
     addMessage("Sent")
   } catch(exception) {
     addMessage("Failed To Send")
   }
 }
 
-// function createInBrowser(){
-//   $("#items").append("<div class='item'><input type='text' name='name'></div>");
-// }
 
 function bindControls(){
   $('#click').click(function(){
     send();
   })
-
-  // $('#create_in_browser').click(function(){
-  //   createInBrowser();
-  // })
 
   $('#message').keypress(function(event) {
     if (event.keyCode == '13') { send(); }
@@ -63,4 +56,3 @@ $(function() {
   bindControls();
   connect();
 });
-

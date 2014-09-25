@@ -13,6 +13,15 @@ def bind
     html = "<input type='text' name='name'><br />"
     Element.find( '#items' ).append html
   end
+
+  Element.find( 'div#new_item #submit' ).on( :click ) do
+    new_name = Element.find( 'div#new_item input' ).value
+    send_serialized( name:new_name )
+  end
+end
+
+def send_serialized data
+  $$.socket.send data.to_json
 end
 
 Document.ready? do

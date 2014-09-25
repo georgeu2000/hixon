@@ -20,9 +20,9 @@ EventMachine.run do
       @clients.delete ws
     end
 
-    ws.onmessage do |msg|
-      puts "Message received: #{ msg }"
-      Item.message_for ws.signature
+    ws.onmessage do |message|
+      puts "Message received: #{ message }"
+      Item.message_for ws.signature, message
     end
   end
 
