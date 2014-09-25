@@ -11,6 +11,7 @@ It provides 2 way communication between the browser and the server. It's like Ru
 1. Send arbitrary messages from the server to browser
 1. Easy to use. Easy to customize and extend.
 
+
 ####To Do####
 1. Deploy to Heroku
 
@@ -18,5 +19,5 @@ It provides 2 way communication between the browser and the server. It's like Ru
 ####How to Run Specs####
 1. Make sure Mongo is running
 1. guard
-1. <enter>
+1. &lt;enter&gt;
 2. exit
