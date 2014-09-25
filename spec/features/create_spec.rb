@@ -11,7 +11,6 @@ describe 'Create item creates', type: :feature do
   end
 end
 
-
 describe 'Create item sends update to browser', type: :feature do
   specify do
     visit '/'
@@ -23,7 +22,6 @@ describe 'Create item sends update to browser', type: :feature do
   end
 end
 
-
 describe 'Create item creates item in browser', type: :feature do
   specify do
     visit '/'
@@ -34,7 +32,6 @@ describe 'Create item creates item in browser', type: :feature do
     expect( page.html ).to have_css "div#items input[name='name']"
   end
 end
-
 
 describe 'Create item saves item', type: :feature do
   specify do
@@ -50,7 +47,7 @@ describe 'Create item saves item', type: :feature do
   end
 end
 
-describe 'Create item sets CID', type: :feature do
+describe 'Create item sets CID in DOM', type: :feature do
   specify do
     visit '/'
     within 'div#new_item' do
@@ -62,7 +59,7 @@ describe 'Create item sets CID', type: :feature do
   end
 end
 
-describe 'Update item', type: :feature ,focus:false do
+describe 'Create item sets CID in DB', type: :feature do
   specify do
     visit '/'
     within 'div#new_item' do
@@ -70,8 +67,9 @@ describe 'Update item', type: :feature ,focus:false do
       click_button 'submit'
     end
     
-    sleep 0.1
-    expect( Item.count      ).to eq 1
-    expect( Item.first.name ).to eq 'new item name'
+    cid = find( 'div#new_item' )[ 'data-cid' ]
+
+    expect( Item.first.cid ).to eq cid
   end
 end
+

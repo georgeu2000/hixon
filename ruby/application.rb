@@ -22,7 +22,7 @@ def bind
     # alert( Element.find( 'div#new_item' ).attr( 'data-cid' ))
     # alert( Element.find( 'div#new_item' ).data( 'cid' ))
     
-    send_data( name:new_name )
+    send_data( action:'create', name:new_name, cid:cid )
   end
 end
 

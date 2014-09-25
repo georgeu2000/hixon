@@ -8,7 +8,7 @@ function addMessage(msg) {
 function send() {
   try {
     console.log('Browser sending...');
-    socket.send('{"name":"name"}');
+    socket.send('{"action":"create", "name":"name"}');
     addMessage("Sent")
   } catch(exception) {
     addMessage("Failed To Send")
@@ -17,7 +17,7 @@ function send() {
 
 
 function bindControls(){
-  $('#click').click(function(){
+  $('#create_item').click(function(){
     send();
   })
 
