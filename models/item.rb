@@ -1,6 +1,8 @@
 class Item
   include Mongoid::Document
   field :signature, type:Integer
+  field :name,      type:String
+  
 
   class << self
     def message_for signature

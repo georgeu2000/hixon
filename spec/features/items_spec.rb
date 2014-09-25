@@ -21,3 +21,16 @@ describe 'Create item sends update to browser', type: :feature  do
     expect( page.html ).to include 'item created'
   end
 end
+
+
+describe 'Create item creates item in browser', type: :feature do
+  specify do
+    visit '/'
+
+    # click_link 'create item in browser'
+
+    # expect( page.html ).to have_css "div.item"
+    # expect( page.html ).to have_css "div.item input[type='text']"
+    # expect( page.html ).to have_css "div.item input[name='name']"
+  end
+end

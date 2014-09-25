@@ -7,7 +7,7 @@ function addMessage(msg) {
 
 function send() {
   try {
-    console.log('sending...');
+    console.log('Browser sending...');
     socket.send('message');
     addMessage("Sent")
   } catch(exception) {
@@ -15,10 +15,18 @@ function send() {
   }
 }
 
+// function createInBrowser(){
+//   $("#items").append("<div class='item'><input type='text' name='name'></div>");
+// }
+
 function bindControls(){
   $('#click').click(function(){
     send();
   })
+
+  // $('#create_in_browser').click(function(){
+  //   createInBrowser();
+  // })
 
   $('#message').keypress(function(event) {
     if (event.keyCode == '13') { send(); }
