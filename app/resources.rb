@@ -4,8 +4,9 @@ require "opal-jquery"
 
 puts :_____RESOURCES_____
 
-get '/' do
-  File.read 'pages/home.html'
+get '/:page' do
+  html = File.read( 'pages/layout.html' )
+  html.gsub( '<< page >>', File.read( "pages/#{ params[ :page ]}.html" ))
 end
 
 get '/assets/application.js' do

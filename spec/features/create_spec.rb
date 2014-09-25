@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 
-describe 'Create item creates', type: :feature do
+describe 'Create item creates', type: :feature  do
   specify do
-    visit '/'
+    visit '/test'
     click_link 'create item'
 
     sleep 0.1
@@ -13,7 +13,7 @@ end
 
 describe 'Create item sends update to browser', type: :feature do
   specify do
-    visit '/'
+    visit '/test'
     click_link 'create item' 
 
     sleep 0.1
@@ -24,7 +24,7 @@ end
 
 describe 'Create item creates item in browser', type: :feature do
   specify do
-    visit '/'
+    visit '/test'
     click_link 'create item in browser'
 
     expect( page.html ).to have_css "div#items"
@@ -35,7 +35,7 @@ end
 
 describe 'Create item saves item', type: :feature do
   specify do
-    visit '/'
+    visit '/test'
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'
@@ -49,7 +49,7 @@ end
 
 describe 'Create item sets CID in DOM', type: :feature do
   specify do
-    visit '/'
+    visit '/test'
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'
@@ -61,7 +61,7 @@ end
 
 describe 'Create item sets CID in DB', type: :feature do
   specify do
-    visit '/'
+    visit '/test'
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'
