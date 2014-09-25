@@ -18,5 +18,5 @@ It provides 2 way communication between the browser and the server. It's like Ru
 ####How to Run Specs####
 1. Make sure Mongo is running
 1. guard
-1. hit enter
+1. <enter>
 2. exit
