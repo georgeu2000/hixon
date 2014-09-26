@@ -5,13 +5,21 @@ def bind
   end
 
   Element.find( 'div#new_item #submit' ).on( :click ) do
-    new_name = Element.find( 'div#new_item input' ).value
+    name = Element.find( 'div#new_item input' ).value
     
-    cid = generate_cid
-    Element.find( 'div#new_item' ).attr( 'data-cid', cid )
-    
-    send_data( action:'create', name:new_name, cid:cid )
+    create_item_for( name:name )
   end
+end
+
+def create_item_for params
+  cid = generate_cid
+  update_element_cid 'div#new_item', cid
+  
+  send_data( action:'create', name:params[ :name ], cid:cid )
+end
+
+def update_element_cid finder, cid
+  Element.find( finder ).attr( 'data-cid', cid )
 end
 
 Document.ready? do
