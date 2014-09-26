@@ -8,13 +8,19 @@ end
 
 # alert 'Hi there!'
 
-def get_page page
-  puts "#{ __method__ } #{ page } starting..."
 
+def listen
+  # $$.socket.on( :onmessage ) do |message|
+  #   alert( message )
+  #   html = "<div class='item'>message</item>"
+  #   Element.find( "#items" ).append html
+  # end
+end
+
+def get_page page
   request = HTTP.get( "/pages/#{ page }" )
 
   request.callback {
-    puts "#{ __method__ } #{ page } response received!"
     Element.find( '#page_content' ).html request.body
   }
   request.errback {

@@ -3,7 +3,6 @@ require 'spec_helper'
 
 describe 'Read item' do
   specify do
-    skip
     visit '/'
     find( '#nav_create' ).click
 
@@ -14,7 +13,7 @@ describe 'Read item' do
     
     find( '#nav_read' ).click
     
-    expect( find( '#page_content' ).text ).to include 'Read Items'
-    expect( find( '#items .item'  ).text ).to include 'new name'
+    expect( page.text ).to include 'Read Items'
+    expect( find( '#items .item'  ).text ).to include 'Name'
   end
 end

@@ -27,7 +27,7 @@ describe 'Create item sends update to browser' do
   end
 end
 
-describe 'Create item creates item in browser' do
+describe 'Show Create Item HTML' do
   specify do
     visit '/'
     find( '#nav_create' ).click
@@ -43,7 +43,7 @@ describe 'Create item saves item' do
   specify do
     visit '/'
     find( '#nav_create' ).click
-    
+
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'

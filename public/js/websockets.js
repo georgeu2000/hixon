@@ -2,7 +2,7 @@ var socket, host;
 host = "ws://127.0.0.1:3001";
 
 function addMessage(msg) {
-  $("#chat-log").append("" + msg + "<br />");
+  // $("#chat-log").append("" + msg + "<br />");
 }
 
 function send() {
@@ -44,8 +44,19 @@ function connect() {
       addMessage("Socket Status: " + socket.readyState + " (closed)");
     }
 
-    socket.onmessage = function(msg) {
-      addMessage("Received: " + msg.data);
+    socket.onmessage = function(message) {
+      // addMessage("Received: " + message.data);
+
+      console.log( message.data );
+      console.log( JSON.parse( message.data ));
+
+      var item = JSON.parse( message.data ).item;
+      console.log( item );
+
+      if ( item ){ 
+        html = "<div class='item'>" + item[ 'name' ] + "</item>";
+        $( "#items" ).append( html );
+      }
     }
   } catch(exception) {
     addMessage("Error: " + exception);
