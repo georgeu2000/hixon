@@ -4,14 +4,18 @@ require "opal-jquery"
 
 puts :_____RESOURCES_____
 
-get '/:page' do
-  html = File.read( 'pages/layout.html' )
-  html.gsub( '<< page >>', File.read( "pages/#{ params[ :page ]}.html" ))
+get '/' do
+  File.read( 'pages/layout.html' )
 end
 
-get '/assets/application.js' do
+get '/pages/:page' do
+  File.read( "pages/#{ params[ :page ]}.html" )
+end
+
+get '/assets/:page' do
   content_type "text/javascript"
-  Opal.compile( File.read( 'ruby/application.rb' ))
+  file = params[ :page ].gsub( /\.js$/, '.rb' )
+  Opal.compile( File.read( "ruby_js/#{ file }" ))
 end
 
 

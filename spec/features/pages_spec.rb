@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 
-describe 'Home Page', type: :feature do
+describe 'Get Home Page' do
   specify do
-    visit '/test'
+    visit '/'
 
     expect( page.status_code ).to eq 200
   end

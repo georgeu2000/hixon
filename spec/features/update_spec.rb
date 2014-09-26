@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 
-describe 'Update item', type: :feature do
+describe 'Update item', type: :feature ,focus:false do
   before do
     skip
   end
-  
+
   specify do
-    visit '/'
+    visit '/update'
     within 'div#new_item' do
       fill_in 'name', with:'Name'
       click_button 'submit'

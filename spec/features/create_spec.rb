@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 
-describe 'Create item creates', type: :feature  do
+describe 'Create item creates' do
   specify do
-    visit '/test'
+    skip 'Depricated'
+
+    visit '/'
+    find( '#nav_create' ).click
     click_link 'create item'
 
     sleep 0.1
@@ -11,9 +14,11 @@ describe 'Create item creates', type: :feature  do
   end
 end
 
-describe 'Create item sends update to browser', type: :feature do
+describe 'Create item sends update to browser' do
   specify do
-    visit '/test'
+    skip 'Deprecated'
+
+    visit '/create'
     click_link 'create item' 
 
     sleep 0.1
@@ -22,9 +27,10 @@ describe 'Create item sends update to browser', type: :feature do
   end
 end
 
-describe 'Create item creates item in browser', type: :feature do
+describe 'Create item creates item in browser' do
   specify do
-    visit '/test'
+    visit '/'
+    find( '#nav_create' ).click
     click_link 'create item in browser'
 
     expect( page.html ).to have_css "div#items"
@@ -33,9 +39,11 @@ describe 'Create item creates item in browser', type: :feature do
   end
 end
 
-describe 'Create item saves item', type: :feature do
+describe 'Create item saves item' do
   specify do
-    visit '/test'
+    visit '/'
+    find( '#nav_create' ).click
+    
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'
@@ -47,9 +55,11 @@ describe 'Create item saves item', type: :feature do
   end
 end
 
-describe 'Create item sets CID in DOM', type: :feature do
+describe 'Create item sets CID in DOM'  do
   specify do
-    visit '/test'
+    visit '/'
+    find( '#nav_create' ).click
+
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'
@@ -59,9 +69,11 @@ describe 'Create item sets CID in DOM', type: :feature do
   end
 end
 
-describe 'Create item sets CID in DB', type: :feature do
+describe 'Create item sets CID in DB' do
   specify do
-    visit '/test'
+    visit '/'
+    find( '#nav_create' ).click
+
     within 'div#new_item' do
       fill_in 'name', with:'new item name'
       click_button 'submit'
