@@ -1,7 +1,6 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
-puts :_____SPEC_HELPER_____
 
 require './app/init'
 

@@ -44,22 +44,22 @@ function connect() {
       addMessage("Socket Status: " + socket.readyState + " (closed)");
     }
 
-    socket.onmessage = function(message) {
-      // addMessage("Received: " + message.data);
-
-      console.log( message.data );
-      console.log( JSON.parse( message.data ));
-
-      var item = JSON.parse( message.data ).item;
-      console.log( item );
-
-      if ( item ){ 
-        html = "<div class='item'>" + item[ 'name' ] + "</item>";
-        $( "#items" ).append( html );
-      }
+    socket.onmessage = function( message ){
+      onMessage( message );
     }
   } catch(exception) {
     addMessage("Error: " + exception);
+  }
+}
+
+function onMessage( message ){
+  console.log( 'Received message: ' + message.data );
+  
+  var parsed = JSON.parse( message.data ).item;
+  
+  if ( parsed ){ 
+    html = "<div class='item'>" + parsed[ 'name' ] + "</item>";
+    $( "#items" ).append( html );
   }
 }
 

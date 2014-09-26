@@ -33,9 +33,9 @@ describe 'Show Create Item HTML' do
     find( '#nav_create' ).click
     click_link 'create item in browser'
 
-    expect( page.html ).to have_css "div#items"
-    expect( page.html ).to have_css "div#items input[type='text']"
-    expect( page.html ).to have_css "div#items input[name='name']"
+    expect( page.html ).to have_css "div#create_items"
+    expect( page.html ).to have_css "div#create_items input[type='text']"
+    expect( page.html ).to have_css "div#create_items input[name='name']"
   end
 end
 

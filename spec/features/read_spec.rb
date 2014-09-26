@@ -13,7 +13,7 @@ describe 'Read item' do
     
     find( '#nav_read' ).click
     
-    expect( page.text ).to include 'Read Items'
+    expect( find( '#page_content' ).text ).to include 'Read Items'
     expect( find( '#items .item'  ).text ).to include 'Name'
   end
 end

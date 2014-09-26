@@ -1,7 +1,7 @@
 def bind
   Element.find( '#create_in_browser' ).on( :click ) do
-    html = "<input type='text' name='name'><br />"
-    Element.find( '#items' ).append html
+    html = "new item: <input type='text' name='name'><br />"
+    Element.find( '#create_items' ).append html
   end
 
   Element.find( 'div#new_item #submit' ).on( :click ) do

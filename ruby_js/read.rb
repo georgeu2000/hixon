@@ -4,7 +4,6 @@ def read_items
 end
 
 
-
 Document.ready? do
   read_items
 end

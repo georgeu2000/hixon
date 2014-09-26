@@ -1,4 +1,3 @@
-puts :____INIT_____
 
 require 'awesome_print'
 require 'mongoid'
