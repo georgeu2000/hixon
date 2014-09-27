@@ -18,7 +18,7 @@ class Socket
   def on_message json_data
     puts "Received message: #{ json_data }"
     
-    parsed = JSON.parse( json_data ,symbolize_keys:true )[ :item ]
+    parsed = JSON.parse( json_data ,symbolize_keys:true )[ :attributes ]
     
     return unless parsed
     

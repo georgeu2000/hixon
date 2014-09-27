@@ -39,7 +39,7 @@ EventMachine.run do
       return
     end
 
-    data = { signature:item.signature, item:{ name:item.name, cid:item.cid }}
+    data = { signature:item.signature, attributes:{ name:item.name, cid:item.cid }}
 
     send_message data
     message.delete
