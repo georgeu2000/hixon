@@ -1,27 +1,26 @@
 require 'spec_helper'
 
 
-describe 'Update item', type: :feature ,focus:false do
-  before do
-    skip
-  end
-
+describe 'Update item' do
   specify do
-    visit '/update'
+    visit '/'
+    find( '#nav_create' ).click
+
     within 'div#new_item' do
       fill_in 'name', with:'Name'
       click_button 'submit'
     end
     
-    sleep 0.1
+    find( '#nav_update' ).click
     
-    within 'div#new_item' do
-      fill_in 'name', with:'new name'
-      click_button 'submit'
+    within 'div#items' do
+      fill_in 'name', with:'New Name'
+      click_button 'update'
     end
 
-    sleep 0.1
+    find( '#nav_read' ).click
 
-    expect( Item.first.name ).to eq 'new name'
+    expect( find( '#page_content' ).text ).to include 'Read Items'
+    expect( find( '#items .item'  ).text ).to include 'New Name'
   end
 end

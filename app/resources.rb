@@ -3,7 +3,9 @@ require 'opal'
 require "opal-jquery"
 
 get '/' do
-  File.read( 'pages/layout.html' )
+  body = File.read( 'pages/layout.html' )
+  nav  = File.read( 'pages/nav.html'    )
+  body.gsub( '{{& nav }}', nav )
 end
 
 get '/pages/:page' do

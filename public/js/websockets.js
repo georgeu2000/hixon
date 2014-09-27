@@ -45,23 +45,13 @@ function connect() {
     }
 
     socket.onmessage = function( message ){
-      onMessage( message );
+      Opal.Socket.$new().$on_message( message.data );
     }
   } catch(exception) {
     addMessage("Error: " + exception);
   }
 }
 
-function onMessage( message ){
-  console.log( 'Received message: ' + message.data );
-  
-  var parsed = JSON.parse( message.data ).item;
-  
-  if ( parsed ){ 
-    html = "<div class='item'>" + parsed[ 'name' ] + "</item>";
-    $( "#items" ).append( html );
-  }
-}
 
 $(function() {
   bindControls();

@@ -6,9 +6,6 @@ def alert msg
   `alert(msg)`
 end
 
-# alert 'Hi there!'
-
-
 def get_page page
   request = HTTP.get( "/pages/#{ page }" )
 
@@ -20,7 +17,7 @@ def get_page page
   }
 end
 
-NAV_ITEMS = [ :create, :read ]
+NAV_ITEMS = [ :create, :read, :update ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do
@@ -41,3 +38,10 @@ end
 Document.ready? do
   bind_nav
 end
+
+class Socket
+  def on_message json_data
+    puts "Received message: #{ json_data }"
+  end
+end
+

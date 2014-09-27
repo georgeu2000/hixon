@@ -3,17 +3,26 @@ class Item
   include Mongoid::Attributes::Dynamic
   field :signature, type:Integer
   field :cid,       type:String
+  has_one :message_to_browser
   
 
   class << self
     def action_create signature, params
-      Item.create params.merge( signature:signature )
-      send_message_for signature, params
+      puts __method__
+      item = Item.create params.merge( signature:signature )
+      MessageToBrowser.create( item:item )
     end
 
     def action_read signature, params
-      puts "#{ self } #{ __method__ } #{ signature } #{ params }"
+      puts "#{ self }.#{ __method__ } signature:#{ signature } #{ params }"
       MessageToBrowser.send_items_to signature
+    end
+
+    def action_update signature, params
+      puts "#{ self }.#{ __method__ } signature:#{ signature } #{ params }"
+      item = Item.where( cid:params[ :cid ]).first
+      item.name = params[ :name ]
+      item.save
     end
 
     def message_for signature, data
@@ -24,14 +33,6 @@ class Item
       action = 'action_' + parsed.delete( :action )
       
       send action.to_sym, signature, parsed
-    end
-
-    def send_message_for signature, params
-      puts "#{ self } #{ __method__ } #{ signature } #{ params }"
-
-      message = { item:{ name:params[ :name ]}}.to_json
-      MessageToBrowser.create( message:message, 
-                               signature:signature    )
     end
   end
 end

@@ -9,14 +9,14 @@ EventMachine.run do
 
   EM::WebSocket.start(:host => '127.0.0.1', :port => '3001') do |ws|
     ws.onopen do
-      puts 'Connection opened.'
+      # puts 'Connection opened.'
       ws.send ({ status:'open' }.to_json )
       @clients << ws
     end
 
     ws.onclose do
       ws.send( { status:'closed' }.to_json )
-      puts 'Connection closed.'
+      # puts 'Connection closed.'
       @clients.delete ws
     end
 
@@ -29,15 +29,19 @@ EventMachine.run do
   EM.add_periodic_timer( 0.1 ){ check_queue }
 
   def check_queue
-    item = MessageToBrowser.first
-    return if item.nil?
+    message = MessageToBrowser.first
+    return if message.nil?
 
-    send_message item.message, item.signature
-    item.delete
+    item = message.item
+    data = { signature:item.signature, item:{ name:item.name, cid:item.cid }}
+
+    send_message data
+    message.delete
   end
 
-  def send_message message, signature
+  def send_message data
     puts "EM.#{ __method__ }: Total of #{ @clients.count } clients connected."
+    signature = data.delete( :signature )
     ws = @clients.select{| ws | ws.signature == signature }.first
     if ws.nil?
       puts "No socket with signature #{ signature }"
@@ -45,6 +49,6 @@ EventMachine.run do
     end
 
     puts "EM.#{ __method__ } to #{ ws.signature }"
-    ws.send message
+    ws.send data.to_json
   end
 end
