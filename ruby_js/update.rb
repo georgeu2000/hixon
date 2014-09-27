@@ -8,7 +8,7 @@ def bind
   Element.find( 'div#items button.update' ).on( :click ) do |e|
     input = Element.find( e.target ).parent.children( 'input' )
     name  = input.prop( 'value' )
-    cid   = input.data( 'cid' );
+    cid   = input.data( 'cid' )
     
     send_data( action:'update', name:name, cid:cid )
   end

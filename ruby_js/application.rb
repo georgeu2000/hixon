@@ -17,7 +17,7 @@ def get_page page
   }
 end
 
-NAV_ITEMS = [ :create, :read, :update ]
+NAV_ITEMS = [ :create, :read, :update, :delete ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do

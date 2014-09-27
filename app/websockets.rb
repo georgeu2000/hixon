@@ -33,6 +33,12 @@ EventMachine.run do
     return if message.nil?
 
     item = message.item
+
+    if item.nil?
+      message.delete
+      return
+    end
+
     data = { signature:item.signature, item:{ name:item.name, cid:item.cid }}
 
     send_message data
