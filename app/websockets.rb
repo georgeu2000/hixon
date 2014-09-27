@@ -22,7 +22,7 @@ EventMachine.run do
 
     ws.onmessage do |message|
       puts "Message received: #{ message }"
-      Item.message_for ws.signature, message
+      Controller.message_for ws.signature, message
     end
   end
 
