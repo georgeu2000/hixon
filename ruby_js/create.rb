@@ -7,7 +7,7 @@ def bind
   Element.find( 'div#new_item #submit' ).on( :click ) do
     name = Element.find( 'div#new_item input' ).value
     
-    create_item_for( name:name )
+    create_item_for( model:'item', name:name )
   end
 end
 
@@ -15,7 +15,7 @@ def create_item_for params
   cid = generate_cid
   update_element_cid 'div#new_item', cid
   
-  send_data( action:'create', name:params[ :name ], cid:cid )
+  send_data( action:'create', model:params[ :model ], name:params[ :name ], cid:cid )
 end
 
 def update_element_cid finder, cid

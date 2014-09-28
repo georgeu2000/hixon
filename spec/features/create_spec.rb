@@ -19,7 +19,7 @@ describe 'Create item sends update to browser' do
     skip 'Deprecated'
 
     visit '/create'
-    click_link 'create item' 
+    click_link 'create item'
 
     sleep 0.1
 

@@ -32,14 +32,14 @@ EventMachine.run do
     message = MessageToBrowser.first
     return if message.nil?
 
-    item = message.item
+    object = message.object
 
-    if item.nil?
+    if object.nil?
       message.delete
       return
     end
 
-    data = { signature:item.signature, attributes:{ name:item.name, cid:item.cid }}
+    data = { signature:object.signature, model:object.class.to_s, attributes:{ name:object.name, cid:object.cid }}
 
     send_message data
     message.delete

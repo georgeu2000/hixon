@@ -17,12 +17,15 @@ describe 'Delete item' do
     expect( find( '#items .item'  ).text ).to include 'Item Name'
     
     find( '#nav_delete' ).click
+    sleep 0.1
 
     within 'div#items' do
       click_button 'delete'
     end
 
     find( '#nav_read' ).click
+
+    sleep 0.1
 
     expect( find( '#page_content' ).text ).to     include 'Read Items'
     expect( find( '#items'        ).text ).to_not include 'Item Name'

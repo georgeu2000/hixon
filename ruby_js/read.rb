@@ -1,6 +1,6 @@
 def read_items
   puts "#{ __method__ } starting..."
-  send_data( action:'read' )
+  send_data( action:'read', model:'item' )
 end
 
 class Socket
@@ -11,7 +11,7 @@ class Socket
     
     return unless parsed
     
-    html = "<div class='item'>" + parsed[ 'name' ] + "</item>"
+    html = "<div class='item'>" + parsed[ 'name' ] + "</div>"
     Element.find( "#items" ).append html
   end
 end
