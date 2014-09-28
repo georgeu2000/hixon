@@ -7,11 +7,12 @@ class Socket
   def on_message json_data
     puts "Received message: #{ json_data }"
     
-    parsed = JSON.parse( json_data ,symbolize_keys:true )[ :attributes ]
+    parsed = JSON.parse( json_data ,symbolize_keys:true )
+    model = parsed[ :model ]
+    attributes = parsed[ :attributes ]
+    return unless attributes
     
-    return unless parsed
-    
-    html = "<div class='item'>" + parsed[ 'name' ] + "</div>"
+    html = ItemView.html_for_read model, attributes
     Element.find( "#items" ).append html
   end
 end

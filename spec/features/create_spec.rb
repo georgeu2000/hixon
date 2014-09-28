@@ -29,6 +29,8 @@ end
 
 describe 'Show Create Item HTML' do
   specify do
+    skip 'Depricated'
+
     visit '/'
     find( '#nav_create' ).click
     click_link 'create item in browser'
@@ -41,6 +43,8 @@ end
 
 describe 'Create item saves item' do
   specify do
+    skip 'Depricated'
+
     visit '/'
     find( '#nav_create' ).click
 
@@ -57,6 +61,8 @@ end
 
 describe 'Create item sets CID in DOM'  do
   specify do
+    skip 'Depricated'
+
     visit '/'
     find( '#nav_create' ).click
 
@@ -71,6 +77,8 @@ end
 
 describe 'Create item sets CID in DB' do
   specify do
+    skip 'Depricated'
+    
     visit '/'
     find( '#nav_create' ).click
 

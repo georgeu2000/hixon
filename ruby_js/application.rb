@@ -13,7 +13,7 @@ def get_page page
     Element.find( '#page_content' ).html request.body
   }
   request.errback {
-    puts "ERROR: #{ __method__ } #{ page }."
+    puts "ERROR: ruby_js/application.rb get_page #{ page }."
   }
 end
 
@@ -30,11 +30,6 @@ def send_data data
   $$.socket.send data.to_json
 end
 
-CID_LENGTH = 20
-def generate_cid
-  rand( 36**CID_LENGTH ).to_s( 36 )
-end
-
 Document.ready? do
   bind_nav
 end
@@ -44,4 +39,3 @@ class Socket
     puts "Received message: #{ json_data }"
   end
 end
-

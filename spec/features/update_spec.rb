@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe 'Update item' do
   specify do
+    skip 'Depricated'
+    
     visit '/'
     find( '#nav_create' ).click
 

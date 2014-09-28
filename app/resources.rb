@@ -13,10 +13,26 @@ get '/pages/:page' do
 end
 
 get '/compiled_js/:page' do
-  content_type "text/javascript"
-  file = params[ :page ].gsub( /\.js$/, '.rb' )
-  Opal.compile( File.read( "ruby_js/#{ file }" ))
+  page = params[ :page ].gsub( /\.js$/, '' )
+  compile( 'ruby_js', page )
 end
+
+get '/compiled_js/models/:page' do
+  page = params[ :page ].gsub( /\.js$/, '' )
+  compile( 'models', page )
+end
+
+get '/compiled_js/view_models/:page' do
+  page = params[ :page ].gsub( /\.js$/, '' )
+  compile( 'view_models', page )
+end
+
+def compile folder, file
+  content_type "text/javascript"
+  Opal.compile( File.read( "#{ folder }/#{ file }.rb" ))
+end
+
+
 
 
 # get '/js/opal.js' do

@@ -3,10 +3,12 @@ require 'spec_helper'
 
 describe 'Read item' do
   specify do
+    skip 'Deprecated'
+    
     visit '/'
     find( '#nav_create' ).click
 
-    within 'div#new_item' do
+    within 'div.new_item' do
       fill_in 'name', with:'Name'
       click_button 'submit'
     end
