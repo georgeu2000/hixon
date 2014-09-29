@@ -3,13 +3,18 @@ Hixon
 
 Hixon is a framework that supports Ruby on both the server and the client. 
 
-It provides 2 way communication between the browser and the server. It's like Ruby on Rails where the browser and server all automatically synced.
+It provides 2 way communication between the browser and the server. It's like Ruby on Rails where the browser and server are automatically synced.
+
+Hixon accelerates and simplifies Web development with the following features:
+1. Syncs objects on client and server
+2. Bind objects to HTML
+
 
 ####Goals####
 1. Developer Happiness&trade;
 1. Automatically sync objects on browswer and server
 1. Send arbitrary messages from the server to browser
-1. Easy to use. Easy to customize and extend.
+1. Easy to use. Easy to extend.
 
 
 ####To Do####
