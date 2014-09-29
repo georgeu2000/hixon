@@ -2,7 +2,7 @@ class MessageToBrowser
   include Mongoid::Document
   field :model,     type:String
   field :target_id, type:String
-  # belongs_to :item
+  
 
   class << self
     def send_objects_to signature, model
