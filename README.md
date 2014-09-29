@@ -17,6 +17,12 @@ Hixon accelerates and simplifies Web development with the following features:
 1. Easy to use. Easy to extend.
 
 
+####Interactions####
+1. CRUD for individual objects
+2. Read for collection
+1. Read for client defined collection 
+
+
 ####To Do####
 1. Deploy to Heroku
 
