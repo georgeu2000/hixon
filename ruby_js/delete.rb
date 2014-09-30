@@ -1,6 +1,6 @@
 def read_items
   puts "#{ __method__ } starting..."
-  send_data( action:'read', model:'item' )
+  send_data( action:'read', model:'Item' )
 end
 
 

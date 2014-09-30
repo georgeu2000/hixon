@@ -22,7 +22,7 @@ EventMachine.run do
 
     ws.onmessage do |message|
       puts "Message received: #{ message }"
-      Controller.message_for ws.signature, message
+      Controller.process_message_for ws.signature, message
     end
   end
 
@@ -39,7 +39,12 @@ EventMachine.run do
       return
     end
 
-    data = { signature:object.signature, model:object.class.to_s, attributes:{ name:object.name, cid:object.cid }}
+    attributes = object.attributes
+    attributes.delete( '_id'   )
+    attributes.delete( '_type' )
+
+    data = { signature:object.signature, model:object.class.to_s  , 
+             attributes:attributes.merge( cid:object.cid )}
 
     send_message data
     message.delete

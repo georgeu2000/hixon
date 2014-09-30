@@ -6,7 +6,7 @@ class MessageToBrowser
 
   class << self
     def send_objects_to signature, model
-      klass = Module.const_get( model.capitalize )
+      klass = Utils.class_for( model )
 
       klass.where( signature:signature ).each do |target|
         puts "#{ self }.#{ __method__ } #{ signature }"
@@ -17,7 +17,7 @@ class MessageToBrowser
   end
 
   def object
-    klass = Module.const_get( model.capitalize )
+    klass = Utils.class_for( model )
     klass.where( _id:target_id ).first
   end
 end

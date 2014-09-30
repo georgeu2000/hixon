@@ -17,7 +17,17 @@ def get_page page
   }
 end
 
-NAV_ITEMS = [ :create, :read, :update, :delete ]
+
+def get_template template
+  HTTP.get( "/templates/#{ template }", async: false ) do |response|
+    if ! response.ok?
+      puts "ERROR: ruby_js/application.rb get_template #{ template }."
+    end
+  end.body
+end
+
+
+NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, :big_data_item_view ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do

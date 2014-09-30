@@ -20,6 +20,7 @@ guard :rspec, cmd: 'rspec spec' do
   watch(%r{^app/(.+)\.rb$})         { 'spec' }
   watch(%r{^ruby_js/(.+)\.rb$})     { 'spec' }
   watch(%r{^models/(.+)\.rb$})      { 'spec' }
+  watch(%r{^public/templates/(.+)\.rb$})   { 'spec' }
   watch(%r{^view_models/(.+)\.rb$}) { 'spec' }
   watch(%r{^pages/(.+)\.html$})     { 'spec' }
   watch(%r{^public/js/(.+)\.js$})   { 'spec' }

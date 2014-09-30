@@ -1,9 +1,10 @@
 def bind
   Element.find( "div.item button[ name='submit' ]" ).on( :click ) do
-    name = Element.find( "div.item input[ name='name' ]" ).value
-    cid  = Element.find( "div.item" ).data( 'cid' )
+    name  = Element.find( "div.item input[ name='name' ]" ).value
+    cid   = Element.find( "div.item" ).data( 'cid' )
+    model = Element.find( "div.item" ).data( 'model' )
     
-    create_item_for( model:'item', cid:cid, name:name )
+    create_item_for( model:model, cid:cid, name:name )
   end
 end
 

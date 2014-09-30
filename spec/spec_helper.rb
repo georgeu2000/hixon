@@ -1,7 +1,6 @@
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
-
 require './app/init'
 
 RSpec.configure do |config|

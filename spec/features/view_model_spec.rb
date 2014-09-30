@@ -1,6 +1,28 @@
 require 'spec_helper'
 
 
+describe 'Create item creates' do
+  specify do
+    visit '/'
+    find( '#nav_item_view' ).click
+
+    within 'div.item' do
+      fill_in 'name', with:'Item Name'
+      click_button 'submit'
+    end
+    
+    cid = find( 'div.item' )[ 'data-cid' ]
+    expect( cid.length ).to be > 18
+
+    find( '#nav_read' ).click
+
+    expect( find( '#page_content' ).text ).to include 'Read Items'
+    expect( find( "#items .item span[ data-name='name' ]" ).text ).to eq 'Item Name'
+    expect( find( "#items .item" )[ 'data-cid' ]).to eq cid
+  end
+end
+
+
 describe 'View Model creates and reads Item' do
   specify do
     visit '/'
