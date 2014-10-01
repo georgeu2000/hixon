@@ -27,7 +27,7 @@ def get_template template
 end
 
 
-NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, :big_data_item_view ]
+NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, :big_data_item_form ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do
