@@ -68,7 +68,7 @@ class Socket
     attributes = parsed[ :attributes ]
     return unless attributes
     
-    html = BigDataItemView.alternate_html_for_read model
+    html = BigDataItemView.alternate_html_for_read( model )
     Element.find( "#read_big_data_item" ).html html
 
     set_for attributes

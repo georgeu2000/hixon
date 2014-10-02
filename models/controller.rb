@@ -5,8 +5,6 @@ class Controller
       
       klass = Utils.class_for( params.delete( :model ))
       object = klass.create( params.merge( signature:signature ))
-
-      MessageToBrowser.create( model:object.class.to_s, target_id:object.id )
     end
 
     def action_read signature, params

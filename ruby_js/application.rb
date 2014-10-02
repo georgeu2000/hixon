@@ -2,9 +2,6 @@ require 'opal'
 require 'jquery'
 require 'opal-jquery'
 
-def alert msg
-  `alert(msg)`
-end
 
 def get_page page
   request = HTTP.get( "/pages/#{ page }" )
@@ -27,7 +24,8 @@ def get_template template
 end
 
 
-NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, :big_data_item_form ]
+NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, 
+              :big_data_item_form, :big_data_item_collection ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do
