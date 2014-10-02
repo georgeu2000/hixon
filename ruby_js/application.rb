@@ -25,7 +25,8 @@ end
 
 
 NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, 
-              :big_data_item_form, :big_data_item_collection ]
+              :big_data_item_form, :big_data_item_collection,
+              :big_data_item_filter ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do

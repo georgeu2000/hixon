@@ -68,3 +68,38 @@ describe 'Big Data Item collection gets updates' do
     expect( all( ".big_data_item_read span[name='name']" ).map{| e | e.text }).to eq [ 'Item 1', 'Item 2' ]
   end
 end
+
+describe 'Big Data Item filter' do
+  specify do
+    visit '/'
+    find( '#nav_big_data_item_form' ).click
+
+    within 'form.big_data_item' do
+      fill_in 'name', with:'Item 1'
+      fill_in 'drink', with:'Coke'
+      click_button 'submit'
+    end
+
+    within 'form.big_data_item' do
+      fill_in 'name', with:'Item 2'
+      fill_in 'drink', with:'Orange Juice'
+      click_button 'submit'
+    end
+
+    within 'form.big_data_item' do
+      fill_in 'name', with:'Item 3'
+      fill_in 'drink', with:'Coke'
+      click_button 'submit'
+    end
+
+    sleep 0.3
+
+    find( '#nav_big_data_item_filter' ).click
+
+    sleep 0.3
+
+    expect( all( '.big_data_item_read' ).count ).to eq 2
+    expect( all( ".big_data_item_read span[name='name'  ]" ).map{| e | e.text }).to eq [ 'Item 1', 'Item 3' ]
+    expect( all( ".big_data_item_read span[name='drink' ]" ).map{| e | e.text }).to eq [ 'Coke',   'Coke'   ]
+  end
+end

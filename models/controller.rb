@@ -10,7 +10,7 @@ class Controller
     def action_read signature, params
       puts "#{ self }.#{ __method__ } signature:#{ signature } #{ params }"
       
-      MessageToBrowser.send_objects_to signature, params[ :model ]
+      MessageToBrowser.send_objects_to signature, params[ :model ], params[ :filter ]
     end
 
     def action_update signature, params
