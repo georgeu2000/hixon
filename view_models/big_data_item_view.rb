@@ -12,8 +12,9 @@ class BigDataItemView < ViewModel
       get_template 'big_data_item_read.html'
     end
 
-    def big_data_items
-      send_data( action:'read', model:'BigDataItem', filter:'drink:Coke' )
+    def coke_only
+      send_data( action:'read',   model:'BigDataItem' , 
+                 view:__method__, filter:'drink:Coke' )
     end
   end
 end

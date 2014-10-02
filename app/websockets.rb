@@ -43,7 +43,8 @@ EventMachine.run do
     attributes.delete( '_id'   )
     attributes.delete( '_type' )
 
-    data = { signature:object.signature, model:object.class.to_s  , 
+    data = { signature:object.signature, model:object.class.to_s,
+             view:message[ :view ],
              attributes:attributes.merge( cid:object.cid )}
 
     send_message data

@@ -1,18 +1,19 @@
 class MessageToBrowser
   include Mongoid::Document
+  field :view,      type:String
   field :model,     type:String
   field :target_id, type:String
   
 
   class << self
-    def send_objects_to signature, model, filter
-      klass = Utils.class_for( model )
-      filter_hash = filter_hash_for( filter )
+    def send_objects_to params
+      klass = Utils.class_for( params[ :model ])
+      filter_hash = filter_hash_for( params[ :filter ])
 
       klass.where( filter_hash ).each do |target|
-        puts "#{ self }.#{ __method__ } #{ signature }"
-
-        MessageToBrowser.create( model:model, target_id:target.id )
+        puts "#{ self }.#{ __method__ } #{ params }"
+        
+        MessageToBrowser.create( model:params[ :model ], view:params[ :view ], target_id:target.id )
       end
     end
 
