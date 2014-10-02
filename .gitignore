@@ -1,2 +1,6 @@
 .rbenv-gemsets
 .DS_Store
+
+*.sublime-project
+*.sublime-workspace
+tmp
