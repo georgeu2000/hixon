@@ -39,6 +39,14 @@ def send_data data
   $$.socket.send data.to_json
 end
 
+def init_views
+  puts 'init_views starting...'
+
+  Element.find( 'div[ data-view ]' ).each do |view|
+    BigDataItemView.send( view.attr( 'data-view' ))
+  end
+end
+
 Document.ready? do
   bind_nav
 end

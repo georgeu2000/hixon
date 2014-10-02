@@ -20,7 +20,7 @@ class Socket
   end
 
   def set_for attributes
-    div = Element.find( ".big_data_item_read:not([ data-cid])" )
+    div = Element.find( ".big_data_item_read:not([ data-cid ])" )
     div.attr( 'data-cid', attributes[ :cid ])
 
     attributes.each do |k,v|

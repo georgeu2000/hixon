@@ -1,9 +1,4 @@
 
-def read_big_data_items
-  puts "read_big_data_items starting..."
-  send_data( action:'read', model:'BigDataItem', filter:'drink:Coke' )
-end
-
 class Socket
   def on_message json_data
     puts "Browser received data: #{ json_data }"
@@ -30,5 +25,5 @@ class Socket
 end
 
 Document.ready? do
-  read_big_data_items
+  init_views
 end
