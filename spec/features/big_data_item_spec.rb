@@ -57,7 +57,7 @@ describe 'Big Data Item' do
     expect( find( '.big_data_item_read' )[ 'data-cid' ]).to eq cid
 
     cid_2 = Cid.generate
-    BigDataItem.create( name:'Item 2', cid:cid_2, signature:signature )
+    BigDataItem.create_for( name:'Item 2', cid:cid_2, signature:signature )
 
     sleep 0.2
 

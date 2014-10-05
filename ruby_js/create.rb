@@ -1,3 +1,4 @@
+
 def bind
   Element.find( "div.item button[ name='submit' ]" ).on( :click ) do
     name  = Element.find( "div.item input[ name='name' ]" ).value

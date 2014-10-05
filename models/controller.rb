@@ -4,7 +4,7 @@ class Controller
       puts "#{ self }.#{ __method__ } signature:#{ signature } #{ params }"
       
       klass = Utils.class_for( params.delete( :model ))
-      object = klass.create( params.merge( signature:signature ))
+      object = klass.create_for( params.merge( signature:signature ))
     end
 
     def action_read signature, params

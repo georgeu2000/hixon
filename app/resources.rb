@@ -31,16 +31,3 @@ def compile folder, file
   content_type "text/javascript"
   Opal.compile( File.read( "#{ folder }/#{ file }.rb" ))
 end
-
-
-
-
-# get '/js/opal.js' do
-#   content_type "text/javascript"
-#   Opal::Builder.build('opal')
-# end
-
-# get '/js/opal-jquery.js' do
-#   content_type "text/javascript"
-#   Opal::Builder.build('opal-jquery')
-# end

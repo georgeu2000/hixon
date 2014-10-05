@@ -4,12 +4,12 @@ class CrimsonModel
   field :cid,        type:String
   field :removed,    type:Boolean
 
-  def self.create params
+  def self.create_for params
     puts "#{ self }##{ __method__ } #{ params }"
 
     view = params.delete( :view )
 
-    cm = super( params )
+    cm = create( params )
     cm.send_update_to view
 
     cm

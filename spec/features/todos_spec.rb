@@ -14,7 +14,7 @@ describe 'Todos' do
     signature = Todo.first.signature
 
     cid_2 = Cid.generate
-    Todo.create( text:'buy food', cid:cid_2, view:'all', signature:signature )
+    Todo.create_for( text:'buy food', cid:cid_2, view:'all', signature:signature )
 
     sleep 0.2
 
