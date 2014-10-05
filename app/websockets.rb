@@ -47,6 +47,7 @@ EventMachine.run do
     puts "EM.#{ __method__ }: Total of #{ @clients.count } clients connected."
     signature = data.delete( :signature )
     ws = @clients.select{| ws | ws.signature == signature }.first
+    
     if ws.nil?
       puts "No socket with signature #{ signature }"
       return
