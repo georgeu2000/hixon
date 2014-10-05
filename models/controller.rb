@@ -18,7 +18,7 @@ class Controller
 
       klass = Utils.class_for( params.delete( :model ))
       object = klass.where( cid:params[ :cid ]).first
-      object.name = params[ :name ]
+      object.update_for params
       object.save
     end
 
@@ -27,11 +27,11 @@ class Controller
 
       klass = Utils.class_for( params.delete( :model ))
       object = klass.where( cid:params[ :cid ]).first
-      object.delete if object
+      object.delete_for( params[ :view ]) if object
     end
 
     def process_message_for signature, data
-      puts "#{ self }.#{ __method__ } creating for #{ signature } with #{ data }"
+      puts "#{ self }.#{ __method__ } for #{ signature } with #{ data }"
       
       parsed = JSON.parse( data, symbolize_names:true )
       action = 'action_' + parsed.delete( :action )

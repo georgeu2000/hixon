@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe 'Delete item' do
   specify do
+    skip 'Deprecated'
+
     visit '/'
     find( '#nav_create' ).click
 

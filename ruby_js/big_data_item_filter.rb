@@ -26,5 +26,5 @@ class Socket
 end
 
 Document.ready? do
-  init_views
+  init_views_for BigDataItemView
 end

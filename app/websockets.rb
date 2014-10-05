@@ -36,6 +36,7 @@ EventMachine.run do
 
     if object.nil?
       message.delete
+      puts "#{ self }##{ __method__ } object is nil"
       return
     end
 

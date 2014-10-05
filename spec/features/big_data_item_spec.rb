@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 
-describe 'Create big data item creates and reads' do
-  specify do
+describe 'Big Data Item' do
+  specify 'creates and reads' do
     visit '/'
     find( '#nav_big_data_item_form' ).click
 
@@ -27,10 +27,9 @@ describe 'Create big data item creates and reads' do
     expect( find( ".big_data_item_read" )[ 'data-cid' ]).to eq cid
     expect( find( ".big_data_item_read span[ name='name' ]" ).text ).to eq 'Item Name'
   end
-end
 
-describe 'Big Data Item collection gets updates' do
-  specify do
+
+  specify 'collection gets updates' do
     visit '/'
     find( '#nav_big_data_item_form' ).click
 
@@ -67,10 +66,9 @@ describe 'Big Data Item collection gets updates' do
     expect( all( ".big_data_item_read" ).map{| e | e[ 'data-cid' ]}).to eq [ cid, cid_2 ]
     expect( all( ".big_data_item_read span[name='name']" ).map{| e | e.text }).to eq [ 'Item 1', 'Item 2' ]
   end
-end
 
-describe 'Big Data Item filter' do
-  specify do
+
+  specify 'filters' do
     visit '/'
     find( '#nav_big_data_item_form' ).click
 

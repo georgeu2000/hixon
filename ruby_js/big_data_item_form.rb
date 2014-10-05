@@ -1,53 +1,27 @@
 def bind
-  Element.find( "form.big_data_item button[ name='submit' ]" ).on( :click ) do |e|
-    div = Element.find( e.target ).parent
-    data = data_for( div )
-
-    cid = Cid.generate
-    div.attr( 'data-cid', cid )
-    
-    data.merge!( model:'BigDataItem', cid:cid )
-    
-    create_item_for data
+  Element.find( "form.big_data_item button[ name='submit' ]" ).on( :click ) do |evt|
+    handle_event_for evt, 'BigDataItem'
   end
+end
+
+def handle_event_for evt, model
+  div = Element.find( evt.target ).parent
+  data = data_for( div )
+
+  cid = Cid.generate
+  div.attr( 'data-cid', cid )
+
+  data.merge!( model:model.to_s, cid:cid )
+  
+  create_item_for data
 end
 
 def disable_submit
   Element.find( "form.big_data_item" ).on :submit do |event|
-      event.prevent_default
-    end
-  end
-
-# Replace with JSON SerializeObject
-def data_for element
-  data = {}
-  
-  element.children.each do |e|
-    next if e.prop( 'tagName' ).downcase != 'input'
-    
-    name = e.prop( 'name' )
-    data[ name ] = value_for( e )
-  end
-
-  puts "data: #{ data }"
-
-  data
-end
-
-def value_for input
-  case input.data( 'type' )
-    when 'text', 'date', 'time'
-      input.value
-    when '' # select
-    when 'checkbox'
-      input.value if input.is( ':checked' )
-    when 'radio'
+    event.prevent_default
   end
 end
 
-def create_item_for params
-  send_data params.merge( action:'create', cid:params[ :cid ])
-end
 
 def render_new_form
   html = BigDataItemView.html_for_new
