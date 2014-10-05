@@ -25,6 +25,16 @@ class MessageToBrowser
     end
   end
 
+  def prepare_data
+    attributes = object.attributes
+    attributes.delete( '_id'   )
+    attributes.delete( '_type' )
+    attributes.merge( cid:object.cid )
+
+    { signature:object.signature, model:object.class.to_s,
+      view:view, attributes:attributes }
+  end
+
   def object
     klass = Utils.class_for( model )
     klass.where( _id:target_id ).first

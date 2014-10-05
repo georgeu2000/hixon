@@ -63,7 +63,7 @@ describe 'Todos' do
       click_link 'x'
     end
 
-    sleep 0.1
+    sleep 0.2
     expect( all( ".todo[ data-cid='#{ cid }' ]" )).to be_empty
   end
 end

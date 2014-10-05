@@ -32,25 +32,16 @@ EventMachine.run do
     message = MessageToBrowser.first
     return if message.nil?
 
-    object = message.object
-
-    if object.nil?
+    if message.object.nil?
       message.delete
       puts "#{ self }##{ __method__ } object is nil"
       return
     end
 
-    attributes = object.attributes
-    attributes.delete( '_id'   )
-    attributes.delete( '_type' )
-
-    data = { signature:object.signature, model:object.class.to_s,
-             view:message[ :view ],
-             attributes:attributes.merge( cid:object.cid )}
-
-    send_message data
+    send_message message.prepare_data
     message.delete
   end
+
 
   def send_message data
     puts "EM.#{ __method__ }: Total of #{ @clients.count } clients connected."
