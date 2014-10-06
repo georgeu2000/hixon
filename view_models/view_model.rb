@@ -52,5 +52,9 @@ class ViewModel
         "#{ name }:<span data-name='#{ name }'>#{ value }</span><br />"
       end.join
     end
+
+    def model_name
+      self.to_s.gsub( /View$/, '' )
+    end
   end
 end

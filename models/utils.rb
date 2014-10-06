@@ -8,5 +8,9 @@ class Utils
     def view_for model
       "#{ model }View"
     end
+
+    def view_model_for model
+      class_for view_for( model )
+    end
   end
 end

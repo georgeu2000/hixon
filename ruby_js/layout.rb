@@ -39,7 +39,17 @@ def send_data data
   $$.socket.send data.to_json
 end
 
+def create_object_for evt, model, view
+  div = Element.find( evt.target ).parent
+  data = data_for( div )
+
+  data.merge!( action:'create', model:model, cid:Cid.generate, view:view )
+  
+  send_data data
+end
+
 def create_item_for params
+  # Deprecated
   send_data params.merge( action:'create', cid:params[ :cid ])
 end
 
@@ -92,12 +102,49 @@ def value_for input
   end
 end
 
+def process_message_for view, model, attributes
+  # Default implementation
+  puts 'No message processing.'
+end
+
+def save_for evt
+  element   = Element.find( evt.target ).parent
+  model = element.data( 'model' )
+  view  = element.data( 'view' )
+  data  = data_for( element )
+
+  cid = element.attr( 'data-cid' )
+
+  data.merge!( action:'update', model:model, cid:cid, view:view )
+  
+  send_data data
+end
+
+def delete_for evt
+  element = Element.find( evt.target ).parent
+  model = element.data( 'model' )
+  view  = element.parent.data( 'view' )
+  cid   = element.data( 'cid' )
+
+  send_data( action:'delete', model:model, view:view, cid:cid )
+end
+
 Document.ready? do
   bind_nav
 end
 
 class Socket
   def on_message json_data
-    puts "Received message: #{ json_data }"
+    puts "Browser received data: #{ json_data }"
+    
+    parsed = JSON.parse( json_data ,symbolize_keys:true )
+    model  = parsed[ :model ]
+    view   = parsed[ :view  ]
+    attributes = parsed[ :attributes ]
+    return unless attributes
+
+    process_message_for view, model, attributes
   end
 end
+
+ENTER_KEY = 13

@@ -8,21 +8,27 @@ class TodoView < ViewModel
       get_template 'new_todo.html'
     end
 
-    def todo_read_for attributes
+    def new_element_for attributes
       html = get_template( 'todo_read.html' )
-      read_todo = Element.parse( html )
+      new_todo = Element.parse( html )
       
-      read_todo.attr( 'data-cid', attributes[ :cid ])
-      if attributes[ :done ] == 'true'
-        read_todo.children( "input[ name='done' ]" ).attr( 'checked', true )
-      end 
-      read_todo.children( "input[ name='text' ]" ).attr( 'value', attributes[ :text ])
+      update_element new_todo, attributes
+    end
 
-      read_todo
+    def update_element element, attributes
+      element.attr( 'data-cid', attributes[ :cid ])
+      
+      if attributes[ :done ] == 'true'
+        element.children( "input[ name='done' ]" ).attr( 'checked', true )
+      end 
+      
+      element.children( "input[ name='text' ]" ).attr( 'value', attributes[ :text ])
+
+      element
     end
 
     def all
-      send_data( action:'read',   model:'Todo' , 
+      send_data( action:'read',   model:model_name, 
                  view:__method__, filter:''    )
     end
   end
