@@ -26,7 +26,8 @@ end
 
 NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, 
               :big_data_item_form, :big_data_item_collection,
-              :big_data_item_filter, :todos ]
+              :big_data_item_filter, :todos,
+              :new_post, :all_posts ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do
@@ -40,10 +41,14 @@ def send_data data
 end
 
 def create_object_for evt, model, view
-  div = Element.find( evt.target ).parent
-  data = data_for( div )
+  element = Element.find( evt.target ).parent
+  data = data_for( element )
 
-  data.merge!( action:'create', model:model, cid:Cid.generate, view:view )
+  if data[ :cid ].nil? || data[ :cid ].blank? 
+    data[ :cid ] = Cid.generate
+  end
+
+  data.merge!( action:'create', model:model, view:view )
   
   send_data data
 end
@@ -65,12 +70,6 @@ def init_views_for model_view
   end
 end
 
-def disable_submit_for finder
-  Element.find( finder ).on :submit do |event|
-    event.prevent_default
-  end
-end
-
 def has_child? parent, finder
   parent.children( finder ).count > 0
 end
@@ -80,7 +79,8 @@ def data_for element
   data = {}
   
   element.children.each do |e|
-    next if e.prop( 'tagName' ).downcase != 'input'
+    tag = e.prop( 'tagName' ).downcase.to_sym
+    next unless [ :input, :textarea ].include? tag
     
     name = e.prop( 'name' )
     data[ name ] = value_for( e )
@@ -93,7 +93,7 @@ end
 
 def value_for input
   case input.data( 'type' )
-    when 'text', 'date', 'time'
+    when 'text', 'date', 'time', 'textarea'
       input.value
     when '' # select
     when 'checkbox'
@@ -127,6 +127,10 @@ def delete_for evt
   cid   = element.data( 'cid' )
 
   send_data( action:'delete', model:model, view:view, cid:cid )
+end
+
+def current_location
+  Native(`window`)[:location][:href]
 end
 
 Document.ready? do

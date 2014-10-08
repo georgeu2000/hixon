@@ -1,3 +1,6 @@
+require 'spec_helper'
+
+
 describe 'Todos' do
   specify 'Init and Asyc' do
     visit '/'

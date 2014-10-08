@@ -15,6 +15,7 @@ require './view_models/view_model.rb'
 require './models/item.rb'
 require './models/big_data_item.rb'
 require './models/todo.rb'
+require './models/post.rb'
 
 # APP Views
 require './view_models/item_view.rb'

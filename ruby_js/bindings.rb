@@ -18,6 +18,12 @@ def bind_click_to_link element, name
   end
 end
 
+def bind_click_to_submit_with_action element, name, action
+  element.children( "button[ name='#{ name }' ]" ).on( :click ) do |evt|
+    action.call( evt )
+  end
+end
+
 def bind_enter_to_input_with_action form, name, action
   form.find( "input[ name='#{ name }' ]" ).on( :keypress ) do |evt|
     action.call( evt ) if evt.key_code == ENTER_KEY
@@ -27,4 +33,12 @@ end
 def bind_enter_to_clear_input form, name
   action = lambda{ |evt| evt.target.value = '' }
   bind_enter_to_input_with_action form, name, action
+end
+
+
+# Unbinding
+def disable_submit_for finder
+  Element.find( finder ).on :submit do |event|
+    event.prevent_default
+  end
 end

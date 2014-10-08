@@ -11,7 +11,7 @@ class ExceptionHandler
       env['rack.errors'].puts ex.backtrace.first
       env['rack.errors'].flush
  
-      [500, {'Content-Type' => 'application/text'}, [ 'Error' ]]
+      [ 500, {'Content-Type' => 'application/text'}, [ 'Error' ]]
     end
   end
 end
