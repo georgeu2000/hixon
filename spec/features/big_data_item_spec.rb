@@ -42,7 +42,7 @@ describe 'Big Data Item' do
       click_button 'submit'
     end
 
-    sleep 0.1
+    sleep 0.2
 
     cid = find( 'form.big_data_item' )[ 'data-cid' ]
 
@@ -51,7 +51,7 @@ describe 'Big Data Item' do
 
     find( '#nav_big_data_item_collection' ).click
 
-    sleep 0.1
+    sleep 0.2
 
     expect( all(  ".big_data_item_read" ).count ).to eq 1
     expect( find( '.big_data_item_read' )[ 'data-cid' ]).to eq cid
