@@ -1,7 +1,7 @@
 
 class Socket
   def on_message json_data
-    puts "Browser received data: #{ json_data }"
+    Logger.write "Browser received data: #{ json_data }"
     
     parsed = JSON.parse( json_data ,symbolize_keys:true )
     model  = parsed[ :model ]

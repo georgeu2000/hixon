@@ -4,6 +4,7 @@ require 'mongoid'
 Mongoid.load!( 'config/mongoid.yml', :test )
 
 # Crimson
+require './models/logger.rb'
 require './models/utils.rb'
 require './models/cid.rb'
 require './models/message_to_browser.rb'

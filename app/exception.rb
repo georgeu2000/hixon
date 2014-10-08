@@ -1,5 +1,3 @@
-puts 'Init Exception'
-
 class Exception
   alias_method :original_backtrace, :backtrace
 

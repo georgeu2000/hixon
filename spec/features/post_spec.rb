@@ -15,13 +15,13 @@ describe 'Post' do
       click_button 'save'
     end
 
-    sleep 0.1
+    sleep 0.2
 
     cid = find( 'form.new-post' )[ 'data-cid' ]
     
     find( '#nav_all_posts' ).click
 
-    sleep 0.2
+    sleep 0.3
 
     expect( all( ".post" ).count ).to eq 1
     expect( all( ".post" ).map{| e | e[ 'data-cid' ]}).to eq [ cid ]
@@ -29,7 +29,7 @@ describe 'Post' do
     expect( all( ".post [ name='body'  ]" ).map{| e | e.text }).to eq []
     
     find( ".post[ data-cid='#{ cid }' ]" ).click
-    sleep 0.2
+    sleep 0.3
 
     expect( all( ".post" ).count ).to eq 1
     expect( all( ".post" ).map{| e | e[ 'data-cid' ]}).to eq [ cid ]

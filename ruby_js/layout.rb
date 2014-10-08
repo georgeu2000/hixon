@@ -63,7 +63,7 @@ def update_item_for params
 end
 
 def init_views_for model_view
-  puts 'init_views starting...'
+  Logger.write 'init_views starting...'
 
   Element.find( 'div[ data-view ]' ).each do |view|
     model_view.send( view.attr( 'data-view' ))
@@ -86,7 +86,7 @@ def data_for element
     data[ name ] = value_for( e )
   end
 
-  puts "data: #{ data }"
+  Logger.write "data: #{ data }"
 
   data
 end
@@ -139,7 +139,7 @@ end
 
 class Socket
   def on_message json_data
-    puts "Browser received data: #{ json_data }"
+    Logger.write "Browser received data: #{ json_data }"
     
     parsed = JSON.parse( json_data ,symbolize_keys:true )
     model  = parsed[ :model ]
@@ -150,5 +150,6 @@ class Socket
     process_message_for view, model, attributes
   end
 end
+
 
 ENTER_KEY = 13

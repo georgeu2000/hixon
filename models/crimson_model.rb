@@ -5,7 +5,7 @@ class CrimsonModel
   field :removed,    type:Boolean
 
   def self.create_for params
-    puts "#{ self }##{ __method__ } #{ params }"
+    Logger.write "#{ self }##{ __method__ } #{ params }"
 
     view = params.delete( :view )
 
@@ -35,7 +35,7 @@ class CrimsonModel
 
   
   def send_update_to view
-    puts "#{ __method__ } #{ view }"
+    Logger.write "#{ __method__ } #{ view }"
     MessageToBrowser.create( model:self.class.to_s, target_id:id, view:view )
   end
 end

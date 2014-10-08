@@ -11,7 +11,7 @@ class MessageToBrowser
       filter_hash = filter_hash_for( params[ :filter ])
 
       klass.where( filter_hash ).each do |target|
-        puts "#{ self }.#{ __method__ } #{ params }"
+        Logger.write "#{ self }.#{ __method__ } #{ params }"
         
         MessageToBrowser.create( model:params[ :model ], view:params[ :view ], target_id:target.id )
       end
