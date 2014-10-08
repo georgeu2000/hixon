@@ -1,5 +1,6 @@
 require 'em-websocket'
 require './app/init'
+require './app/exception'
 
 
 EventMachine.run do
