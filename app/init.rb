@@ -20,8 +20,12 @@ require './models/todo.rb'
 require './view_models/item_view.rb'
 require './view_models/todo_view.rb'
 
-# HTTP Resources
+# Sinatra
+require './middleware/exception_handler.rb'
 require './app/resources.rb'
 
 
 set :public_folder, 'public'
+set :dump_errors, false
+ 
+use ExceptionHandler
