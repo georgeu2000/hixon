@@ -16,7 +16,8 @@ end
 
 
 def get_template template
-  HTTP.get( "/templates/#{ template }", async: false ) do |response|
+  t2 = template.gsub( '-', '_' )
+  HTTP.get( "/templates/#{ t2 }", async: false ) do |response|
     if ! response.ok?
       puts "ERROR: ruby_js/application.rb get_template #{ template }."
     end

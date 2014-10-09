@@ -22,7 +22,7 @@ end
 
 def create_element_for view_element, model_name, attributes
   view_model  = Utils.view_model_for( model_name )
-  new_element = view_model.new_element_for( attributes )
+  new_element = view_model.new_element_for( 'all-posts', attributes )
   view_element.append new_element
   bind_click_for new_element
 end

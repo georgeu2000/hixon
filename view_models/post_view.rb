@@ -16,16 +16,8 @@ class PostView < ViewModel
     end
 
     
-    def new_element_for attributes
-      html = get_template( 'all_posts.html' )
-      new_element = Element.parse( html )
-      
-      update_element new_element, attributes
-    end
-
-    
-    def new_element_for_single_view attributes
-      html = get_template( 'single_post.html' )
+    def new_element_for template, attributes
+      html = get_template( "#{ template }.html" )
       new_element = Element.parse( html )
       
       update_element new_element, attributes

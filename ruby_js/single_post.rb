@@ -22,7 +22,7 @@ end
 
 def create_element_for view_element, model_name, attributes
   view_model  = Utils.view_model_for( model_name )
-  new_element = view_model.new_element_for_single_view( attributes )
+  new_element = view_model.new_element_for( 'single_post', attributes )
   view_element.append new_element
 end
 
