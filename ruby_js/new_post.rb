@@ -13,7 +13,7 @@ def process_message_for view_name, model_name, attributes
   element = Element.find( 'form.new-post' )
   view_model = Utils.view_model_for( model_name )
 
-  view_model.update_element_for_new element, attributes
+  view_model.update_element element, attributes
 end
 
 Document.ready? do

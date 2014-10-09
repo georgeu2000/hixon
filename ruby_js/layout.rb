@@ -66,7 +66,8 @@ def init_views_for model_view
   Logger.write 'init_views starting...'
 
   Element.find( 'div[ data-view ]' ).each do |view|
-    model_view.send( view.attr( 'data-view' ))
+    method = view.attr( 'data-view' ).gsub( '-', '_' )
+    model_view.send( method )
   end
 end
 

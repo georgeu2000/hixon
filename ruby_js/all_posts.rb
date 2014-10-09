@@ -1,5 +1,5 @@
 def process_message_for view_name, model_name, attributes
-  view_element = Element.find( "[ data-view='#{ view_name }' ]" )
+  view_element = Element.find( "[ data-view='#{ view_name.gsub( '_', '-' )}' ]" )
   finder = ".#{ model_name.downcase }[ data-cid='#{ attributes[ :cid ]}' ]"
 
   if attributes[ :removed ]
