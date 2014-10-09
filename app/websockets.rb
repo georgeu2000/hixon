@@ -1,6 +1,6 @@
 require 'em-websocket'
 require './app/init'
-require './app/exception'
+require './models/exception'
 require './models/logger'
 
 

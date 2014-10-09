@@ -1,3 +1,5 @@
+# Limit backtrace.
+
 class Exception
   alias_method :original_backtrace, :backtrace
 

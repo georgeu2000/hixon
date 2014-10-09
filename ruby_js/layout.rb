@@ -106,7 +106,7 @@ end
 
 def process_message_for view, model, attributes
   # Default implementation
-  puts 'No message processing.'
+  Logger.write 'No message processing.'
 end
 
 def save_for evt
