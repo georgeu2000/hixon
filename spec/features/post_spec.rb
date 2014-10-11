@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe 'Post' do
+describe 'Post' ,focus:true do
   let( :title ){ 'First Post!' }
   let( :body  ){ 'This is the body for the first post.' }
 
@@ -17,9 +17,9 @@ describe 'Post' do
 
     sleep 0.2
 
-    cid = find( 'form.new-post' )[ 'data-cid' ]
+    cid = Post.first.cid
     
-    find( '#nav_all_posts' ).click
+    find( '#nav_all_post' ).click
 
     sleep 0.3
 

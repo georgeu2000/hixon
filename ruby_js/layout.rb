@@ -8,9 +8,10 @@ def get_page page
 
   request.callback {
     Element.find( '#page_content' ).html request.body
+    init_views
   }
   request.errback {
-    puts "ERROR: ruby_js/application.rb get_page #{ page }."
+    puts "ERROR: ruby_js/application.rb get_page failed for #{ page }."
   }
 end
 
@@ -19,7 +20,7 @@ def get_template template
   t2 = template.gsub( '-', '_' )
   HTTP.get( "/templates/#{ t2 }", async: false ) do |response|
     if ! response.ok?
-      puts "ERROR: ruby_js/application.rb get_template #{ template }."
+      puts "ERROR: ruby_js/application.rb get_template failed for #{ template }."
     end
   end.body
 end
@@ -28,7 +29,7 @@ end
 NAV_ITEMS = [ :create, :read, :update, :delete, :item_view, 
               :big_data_item_form, :big_data_item_collection,
               :big_data_item_filter, :todos,
-              :new_post, :all_posts ]
+              :new_post, :all_post ]
 def bind_nav
   NAV_ITEMS.each do |nav|
     Element.find( "#nav_#{ nav }" ).on( :click ) do
@@ -63,14 +64,27 @@ def update_item_for params
   send_data params.merge( action:'update', cid:params[ :cid ])
 end
 
+#TODO depricate
 def init_views_for model_view
-  Logger.write 'init_views starting...'
+  Logger.write "#{ __method__ } starting..."
 
   Element.find( 'div[ data-view ]' ).each do |view|
     method = view.attr( 'data-view' ).gsub( '-', '_' )
     model_view.send( method )
   end
 end
+
+def init_views
+  Logger.write "#{ __method__ } starting..."
+
+  Element.find( 'div[ data-view ]' ).each do |view_element|
+    view_name = view_element.attr( 'data-view' )
+    view = Utils.view_model_for_view_name( view_name )
+    view.send( :init )
+  end
+end
+
+
 
 def has_child? parent, finder
   parent.children( finder ).count > 0
@@ -104,9 +118,9 @@ def value_for input
   end
 end
 
-def process_message_for view, model, attributes
-  # Default implementation
-  Logger.write 'No message processing.'
+def process_message_for view_name, model_name, attributes
+  view = Utils.view_model_for_view_name( view_name )
+  view.update_for_message view_name, model_name, attributes
 end
 
 def save_for evt
