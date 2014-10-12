@@ -18,6 +18,7 @@ def bind_click_to_link element, name
   end
 end
 
+# TODO change to bind_click_to_button_with_action
 def bind_click_to_submit_with_action element, name, action
   element.children( "button[ name='#{ name }' ]" ).on( :click ) do |evt|
     action.call( evt )

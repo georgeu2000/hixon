@@ -19,7 +19,6 @@ require './models/todo.rb'
 require './models/post.rb'
 
 # APP Views
-require './view_models/item_view.rb'
 require './view_models/todo_view.rb'
 
 # Sinatra

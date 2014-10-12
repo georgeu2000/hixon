@@ -53,6 +53,10 @@ class ViewModel
       end.join
     end
 
+    def init
+      #NOP
+    end
+
     def model_name
       self.to_s.gsub( /View$/, '' )
     end

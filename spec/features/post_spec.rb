@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe 'Post' ,focus:true do
+describe 'Post' do
   let( :title ){ 'First Post!' }
   let( :body  ){ 'This is the body for the first post.' }
 

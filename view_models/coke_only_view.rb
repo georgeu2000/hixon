@@ -1,0 +1,2 @@
+class CokeOnlyView < BigDataItemView
+end

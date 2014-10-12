@@ -1,0 +1,2 @@
+class AllView < TodoView
+end
