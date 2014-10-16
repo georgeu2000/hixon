@@ -13,8 +13,6 @@ require './models/crimson_model.rb'
 require './view_models/view_model.rb'
 
 # App Models
-require './models/item.rb'
-require './models/big_data_item.rb'
 require './models/todo.rb'
 require './models/post.rb'
 
