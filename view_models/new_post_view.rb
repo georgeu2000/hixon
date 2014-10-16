@@ -7,7 +7,7 @@ class NewPostView < PostView
       bind_form_to action
     end
 
-    def update view_name, model_name, attributes
+    def update_for_message view_name, model_name, attributes
       init
     end
 
