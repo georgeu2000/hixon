@@ -116,6 +116,8 @@ def value_for input
 end
 
 def process_message_for view_name, model_name, attributes
+  raise "#{ self.class }##{ __method__ } view_name is nil" if view_name.nil?
+  
   view = Utils.view_model_for_view_name( view_name )
   view.update_for_message view_name, model_name, attributes
 end
@@ -123,7 +125,9 @@ end
 def save_for evt
   element   = Element.find( evt.target ).parent
   model = element.data( 'model' )
-  view  = element.data( 'view' )
+
+  #TODO - Why do we need || parent?
+  view  = element.data( 'view' ) || element.parent.data( 'view' )
   data  = data_for( element )
 
   cid = element.attr( 'data-cid' )

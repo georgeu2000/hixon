@@ -1,4 +1,5 @@
 class PostView < ViewModel
+  #TODO change to SinglePostView ?
   class << self
     def update_element element, attributes
       attributes.delete :signature
@@ -55,14 +56,6 @@ class PostView < ViewModel
       bind_click_to_submit_with_action form, :submit, action
 
       disable_submit_for form
-    end
-
-    def set_content html
-      element.html html
-    end
-
-    def element
-      Element.find( "[ data-view='#{ data_view }' ]" )
     end
 
     def model

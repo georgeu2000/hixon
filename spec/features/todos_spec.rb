@@ -2,7 +2,7 @@ require 'spec_helper'
 
 
 describe 'Todos' do
-  specify 'Init and Asyc' do
+  specify 'Init and Asyc update' do
     visit '/'
     find( '#nav_todos' ).click
 
@@ -17,7 +17,7 @@ describe 'Todos' do
     signature = Todo.first.signature
 
     cid_2 = Cid.generate
-    Todo.create_for( text:'buy food', cid:cid_2, view:'all', signature:signature )
+    Todo.create_for( text:'buy food', cid:cid_2, view:'all-todo', signature:signature )
 
     sleep 0.2
 

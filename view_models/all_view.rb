@@ -1,2 +1,0 @@
-class AllView < TodoView
-end
