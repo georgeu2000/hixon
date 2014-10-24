@@ -10,5 +10,9 @@ class SinglePostView < PostView
     def data_view
       'single-post'
     end
+
+    def element_template
+      'single-post'
+    end
   end
 end

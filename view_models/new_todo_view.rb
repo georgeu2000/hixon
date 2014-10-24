@@ -21,10 +21,6 @@ class NewTodoView < ViewModel
       Todo
     end
 
-    def model_name
-      'Todo'
-    end
-
     def data_view
       'new-todo'
     end

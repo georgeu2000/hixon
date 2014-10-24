@@ -5,7 +5,7 @@ class AllPostView < PostView
                  view:data_view, filter:''       )
     end
 
-    def bind_for new_element
+    def bind_for_new new_element
       new_element.on( :click ) do |evt|
         model = new_element.data( 'model' )
         view  = 'single'
@@ -18,6 +18,10 @@ class AllPostView < PostView
     end
 
     def data_view
+      'all-post'
+    end
+
+    def element_template
       'all-post'
     end
   end
