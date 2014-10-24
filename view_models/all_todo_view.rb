@@ -1,5 +1,10 @@
 class AllTodoView < ViewModel
   class << self
+    def init
+      send_data( action:'read',   model:model_name, 
+                 view:data_view, filter:''        )
+    end
+
     def update_element_field element, key, value
       element.children( "[ name='#{ key }' ]" ).attr( 'value', value )
     end
@@ -14,6 +19,10 @@ class AllTodoView < ViewModel
 
     def model
       Todo
+    end
+
+    def model_name
+      'Todo'
     end
 
     def data_view

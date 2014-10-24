@@ -64,7 +64,7 @@ class ViewModel
 
     def model_name
       #TODO - Depricate?
-      self.to_s.gsub( /View$/, '' )
+      # self.to_s.gsub( /View$/, '' )
     end
   end
 end
