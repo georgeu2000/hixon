@@ -1,6 +1,8 @@
 Hixon
 =========
 
+[![Code Climate](https://codeclimate.com/github/georgeu2000/hixon/badges/gpa.svg)](https://codeclimate.com/github/georgeu2000/hixon)
+
 Hixon is a framework that supports Ruby on both the server and the client. 
 
 It provides 2 way communication between the browser and the server. It's like Ruby on Rails where the browser and server are automatically synced.
